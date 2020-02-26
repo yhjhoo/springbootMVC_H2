@@ -1,18 +1,27 @@
 package me.prince;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/person")
+@AllArgsConstructor
 public class PersonController {
-    @Autowired
     private PersonRepository personRepository;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public Iterable<Person> getAll() {
+    @GetMapping("/all")
+    public List<Person> getAll() {
         return personRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Person getPerson(@PathVariable Long id) {
+        return personRepository.getOne(id);
+    }
+
 }
