@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(PersonController.class)
 class PersonControllerTest {
     @MockBean
-    private PersonRepository personRepository;
+    private PersonService personService;
 
     @Autowired
     private MockMvc mvc;
@@ -25,10 +25,10 @@ class PersonControllerTest {
     @BeforeEach
     void setup() {
         Person person = new Person(1L, "Yang", "Huajie");
-        when(personRepository.findAll())
+        when(personService.findAll())
                 .thenReturn(Arrays.asList(person));
 
-        when(personRepository.getOne(1L)).thenReturn(person);
+        when(personService.getOne(1L)).thenReturn(person);
     }
 
     @Test

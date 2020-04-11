@@ -12,16 +12,17 @@ import java.util.List;
 @RequestMapping(value = "/person")
 @AllArgsConstructor
 public class PersonController {
-    private PersonRepository personRepository;
+//    private PersonRepository personRepository;
+    private PersonService personService;
 
     @GetMapping("/all")
     public List<Person> getAll() {
-        return personRepository.findAll();
+        return personService.findAll();
     }
 
     @GetMapping("/{id}")
     public Person getPerson(@PathVariable Long id) {
-        return personRepository.getOne(id);
+        return personService.getOne(id);
     }
 
 }

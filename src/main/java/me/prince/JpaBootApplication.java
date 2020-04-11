@@ -12,7 +12,7 @@ public class JpaBootApplication {
         SpringApplication.run(JpaBootApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner demo(PersonRepository repo) {
         return args -> {
             repo.save(new Person("f1", "l2"));
@@ -23,6 +23,5 @@ public class JpaBootApplication {
 
             repo.save(new Person("f1", "l2"));
         };
-
-    }
+    }*/
 }
